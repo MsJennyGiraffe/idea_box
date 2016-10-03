@@ -4,4 +4,8 @@ class Api::V1::IdeasController < ApplicationController
     @ideas = Idea.all
     respond_with @ideas
   end
+
+  def create
+
+  end
 end
