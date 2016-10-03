@@ -31,18 +31,17 @@ RSpec.describe Api::V1::IdeasController, :type => :request do
 
   describe "GET#create" do
     it "creates an idea" do
-      post "/api/v1/ideas", {
-        title: "The Lottery Song",
-        description: "If life is just a gamble, gamble if you want to win."
-      }
+      title = "The Lottery Song"
+      body = "If life is just a gamble, gamble if you want to win."
+
+      post "/api/v1/ideas", as: :json, params: { idea: { title: title, body: body } }
 
       idea = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      expect(idea.count).to eq(1)
-      expect(idea_one["title"]).to eq("The Lottery Song")
-      expect(idea_one["body"]).to eq("If life is just a gamble, gamble if you want to win.")
-      expect(idea_one["quality"]).to eq("Swill")
+      expect(idea["title"]).to eq("The Lottery Song")
+      expect(idea["body"]).to eq("If life is just a gamble, gamble if you want to win.")
+      expect(idea["quality"]).to eq("Swill")
     end
   end
 end
