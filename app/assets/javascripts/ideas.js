@@ -14,6 +14,10 @@ $( document ).ready(function() {
           "<h4>" +
           ideas[i].body +
           "</h4>" +
+          "<h4>" +
+          "Quality: " +
+          ideas[i].quality +
+          "</h4>" +
           "</div>"
         );
       }
