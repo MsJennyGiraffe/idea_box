@@ -15,6 +15,11 @@ class Api::V1::IdeasController < ApplicationController
     @idea.update_attributes(idea_params)
   end
 
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.destroy
+  end
+
   private
     def idea_params
       params.require(:idea).permit(:title, :body)

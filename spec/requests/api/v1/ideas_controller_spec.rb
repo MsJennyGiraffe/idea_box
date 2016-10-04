@@ -81,4 +81,32 @@ RSpec.describe Api::V1::IdeasController, :type => :request do
       expect(idea["quality"]).to eq("Swill")
     end
   end
+
+  describe "GET#delete" do
+    it "deletes an idea" do
+      idea_one = Idea.create(
+        title: "Skylight Doctrine",
+        body: "I am the epitome of greatness."
+      )
+      idea_two = Idea.create(
+        title:  "Beast Island",
+        body:   "Bring your friends.",
+        quality: 2
+      )
+
+      delete "/api/v1/ideas/#{idea_one.id}"
+
+      expect(response.status).to eq(204)
+
+      get "/api/v1/ideas"
+
+      ideas = JSON.parse(response.body)
+      idea = ideas.first
+
+      expect(ideas.count).to eq(1)
+      expect(idea["title"]).to eq("Beast Island")
+      expect(idea["body"]).to eq("Bring your friends.")
+      expect(idea["quality"]).to eq("Genius")
+    end
+  end
 end
