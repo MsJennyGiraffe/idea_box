@@ -44,4 +44,41 @@ RSpec.describe Api::V1::IdeasController, :type => :request do
       expect(idea["quality"]).to eq("Swill")
     end
   end
+
+  describe "GET#update" do
+    it "updates an idea with different fields" do
+      idea = Idea.create(
+        title: "Title",
+        body: "I'm so original."
+      )
+      title = "A different title"
+      body = "A different body"
+
+      put "/api/v1/ideas/#{idea.id}", as: :json, params: { idea: { title: title, body: body } }
+
+      idea = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(idea["title"]).to eq("A different title")
+      expect(idea["body"]).to eq("A different body")
+      expect(idea["quality"]).to eq("Swill")
+    end
+
+    it "updates an idea with a different field" do
+      idea = Idea.create(
+        title: "Title",
+        body: "I'm so original."
+      )
+      title = "A different title"
+
+      put "/api/v1/ideas/#{idea.id}", as: :json, params: { idea: { title: title } }
+
+      idea = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(idea["title"]).to eq("A different title")
+      expect(idea["body"]).to eq("I'm so original.")
+      expect(idea["quality"]).to eq("Swill")
+    end
+  end
 end
