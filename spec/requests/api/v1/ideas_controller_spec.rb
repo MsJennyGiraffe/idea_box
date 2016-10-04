@@ -15,6 +15,7 @@ RSpec.describe Api::V1::IdeasController, :type => :request do
 
       get "/api/v1/ideas"
       ideas = JSON.parse(response.body)
+      ideas = ideas["ideas"]
       idea_one = ideas.first
       idea_two = ideas.last
 
@@ -101,7 +102,7 @@ RSpec.describe Api::V1::IdeasController, :type => :request do
       get "/api/v1/ideas"
 
       ideas = JSON.parse(response.body)
-      idea = ideas.first
+      idea = ideas["ideas"].first
 
       expect(ideas.count).to eq(1)
       expect(idea["title"]).to eq("Beast Island")
