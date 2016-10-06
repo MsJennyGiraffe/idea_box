@@ -21,6 +21,6 @@ function createIdeaHTML(idea) {
   "<h4>" +
   "Quality: " +
   idea.quality +
-  "</h4>" + "<button class='delete-button' id='" + idea.id + "'>Delete</button>" +
+  "</h4>" + "<button class='delete-button btn btn-info' id='" + idea.id + "'>Delete</button>" +
   "</div>"
 }
