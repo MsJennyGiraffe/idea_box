@@ -1,4 +1,4 @@
-function displayIdeas(){
+function displayIdeas() {
   $.ajax({
     url: "/api/v1/ideas",
     method: "GET",
@@ -9,7 +9,7 @@ function displayIdeas(){
   });
 }
 
-function deleteIdea(id){
+function deleteIdea(id) {
   $.ajax({
     url: "/api/v1/ideas/" + id,
     method: "DELETE",
@@ -20,7 +20,7 @@ function deleteIdea(id){
   });
 }
 
-function createIdea(title, body){
+function createIdea(title, body) {
   $.ajax({
     url: "/api/v1/ideas",
     method: "POST",
@@ -34,5 +34,31 @@ function createIdea(title, body){
     success: function(response) {
       appendIdeaToPage(response)
     }
+  });
+}
+
+function updateIdeaTitle(id, title) {
+  $.ajax({
+    url: "/api/v1/ideas/" + id,
+    method: "PATCH",
+    data: {
+      idea: {
+        title: title
+      }
+    },
+    dataType: "JSON",
+  });
+}
+
+function updateIdeaBody(id, body) {
+  $.ajax({
+    url: "/api/v1/ideas/" + id,
+    method: "PATCH",
+    data: {
+      idea: {
+        body: body
+      }
+    },
+    dataType: "JSON",
   });
 }
