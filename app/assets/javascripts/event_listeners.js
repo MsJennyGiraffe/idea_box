@@ -9,9 +9,6 @@ function addEventListenerToIdeas() {
       var body = $("#new-idea-body").val()
       createIdea(title, body);
     }
-    else {
-
-    }
   })
 }
 
