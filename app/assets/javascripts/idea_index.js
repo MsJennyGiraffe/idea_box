@@ -12,10 +12,10 @@ function appendIdeaToPage(idea) {
 function createIdeaHTML(idea) {
   return "<div id='ideaDiv-" + idea.id +
   "'class='col-md-6'>" +
-  "<h2 class='text-center'>" +
+  "<h2 class='text-center title' contenteditable='true'>" +
   idea.title +
   "</h2>" +
-  "<h4>" +
+  "<h4 class='body' contenteditable='true'>" +
   idea.body +
   "</h4>" +
   "<h4>" +
