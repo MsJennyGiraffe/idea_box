@@ -3,3 +3,7 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+
+.submit {
+    margin-bottom: 50px;
+}

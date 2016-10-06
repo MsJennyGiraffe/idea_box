@@ -4,8 +4,10 @@ function addEventListenerToIdeas() {
       $('#ideaDiv-' + event.target.id).remove();
       deleteIdea(event.target.id);
     }
-    else {
-      console.log(event);
+    else if ($(event.target).hasClass("submit")) {
+      var title = $("#new-idea-title").val()
+      var body = $("#new-idea-body").val()
+      createIdea(title, body);
     }
   })
 }

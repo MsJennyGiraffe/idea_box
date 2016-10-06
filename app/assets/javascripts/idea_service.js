@@ -19,3 +19,20 @@ function deleteIdea(id){
     dataType: "JSON"
   });
 }
+
+function createIdea(title, body){
+  $.ajax({
+    url: "/api/v1/ideas",
+    method: "POST",
+    data: {
+      idea: {
+        title: title,
+        body: body
+      }
+    },
+    dataType: "JSON",
+    success: function(response) {
+      appendIdeaToPage(response)
+    }
+  });
+}
